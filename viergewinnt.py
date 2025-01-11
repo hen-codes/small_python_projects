@@ -36,6 +36,7 @@ def spielfeld(holesize):
             penUp()
             setHeading(90)
             forward(holesize*2)
+            delay(10)
         setHeading(-180)
         forward(holesize*1.5)
 
@@ -117,6 +118,8 @@ def zuweisen(spalte, ak_spieler_num):
                     ersetzt = True
                     wherey = i-1
     if ersetzt == False:
+        #print("Die Spalte ist bereits voll. Wähle eine neue Spalte!") #NEU
+        #delay(800) #NEU (Um vor der Eingabe die obenstehende Nachricht lesen zu können)
         #ch_spalte()
         #ch_spalte(farbe, holesize, weristdran)
         #frage nach einer neuen Spalte
@@ -129,17 +132,19 @@ def zuweisen(spalte, ak_spieler_num):
 def berechne_position(wherex, wherey, ak_spieler_num):
     setX(xstandard+(wherex-1)*holesize*2)
     setY(ystandard+(wherey-1)*1.5*holesize)
-    if ak_spieler_num == 1:
+    if ak_spieler_num == 0: # NEU (vorher Wert 1)
         setPenColor(spieler1)
     else:
         setPenColor(spieler2)
     penDown()
     dot(holesize)
     penUp()
+    delay(1000) #NEU (löst das Problem, dass der Punkt erst nach der nächsten Eingabe gezeichnet wird)
     abwechseln(ak_spieler_num)
 
 
 spielfeld(holesize)
-delay(1)
+delay(1000)
 abwechseln(1)
+
 
