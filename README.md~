@@ -4,8 +4,8 @@ This repository contains small and so far mostly very simple projects written in
 
 ## Index
 
-### random_letter
+# random_letter
 A random letter generator. No letter is used twice. 
 
-### viergewinnt
+# viergewinnt
 A small game for two players. (to be run on tygerpython) 
