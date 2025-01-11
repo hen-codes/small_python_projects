@@ -7,7 +7,7 @@ from gturtle import *
 makeTurtle()
 hideTurtle()
 
-##Variablen
+#Variablen
 holesize = 25
 xstandard = 0-6*holesize
 ystandard = -1*holesize #NEU (herumgepröbelt, keine Ahnung, warum dieser Wert)
