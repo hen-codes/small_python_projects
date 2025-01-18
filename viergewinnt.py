@@ -120,6 +120,7 @@ def zuweisen(spalte, ak_spieler_num):
                     spalte6[i] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
+
     elif spalte == 7:
         for i in range(6):
             if ersetzt == False:
@@ -153,7 +154,20 @@ def berechne_position(wherex, wherey, ak_spieler_num):
     werte_anzeigen()
     abwechseln(ak_spieler_num)
 
+# auf Sieg prüfen
+
+def check_winner: 
+     if spalte6[i] == spalte6[i+1] == spalte6[i+2] == spalte6[i+3]:
+                        print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+    
+
+
+# Programm ausführen
 
 spielfeld(holesize)
 delay(1000)
 abwechseln(1)
+
+
+
+
