@@ -166,35 +166,38 @@ def berechne_position(wherex, wherey, ak_spieler_num):
 # auf Sieg prüfen
 
 def check_winner(ak_spieler_num): 
-    for x in range(0, 24):
+    win = False
+    for x in range(0, 24): #horizontaler Check
         if werte[x] != 0:
             if werte[x] == werte[x + 6] == werte[x + 12] == werte[x + 18]:
+                win = True
                 for i in range(10): 
                     print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
                     delay(10)
                 delay(99999999999)
-    for x in range(0, 36, 6) and (1, 37, 6) and (2, 38, 6):
-        if werte[x] != 0:
-             if werte[x] == werte[x+ 1] == werte[x + 2] == werte[x + 3]:
-                for i in range(10): 
-                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
-                    delay(10)
-                delay(99999999999)
-    for x in range(0, 18, 6) and (1, 19, 6) and (2, 20, 6):
-        if werte[x] != 0:
-             if werte[x] == werte[x+ 7] == werte[x + 14] == werte[x + 21]:
-                for i in range(10): 
-                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
-                    delay(10)
-                delay(99999999999)
-    for x in range(3, 21, 6) and (4, 22, 6) and (5, 23, 6):
-        if werte[x] != 0:
-             if werte[x] == werte[x+ 5] == werte[x + 10] == werte[x + 15]:
-                for i in range(10): 
-                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
-                    delay(10)
-                delay(99999999999)
-    
+    ranges = [(0, 37, 6), (1, 38, 6), (2, 39, 6)] #vertikaler Check
+    for start, end, step in ranges:
+        for x in range(start, end, step):
+            if werte[x] != 0:
+                 if werte[x] == werte[x+ 1] == werte[x + 2] == werte[x + 3]:
+                    win = True 
+    ranges = [(0, 19, 6), (1, 20, 6), (2, 21, 6)] #diagonal aufsteigender Check
+    for start, end, step in ranges:    
+        for x in range(start, end, step):
+            if werte[x] != 0:
+                if werte[x] == werte[x+ 7] == werte[x + 14] == werte[x + 21]:
+                    win = True
+    ranges = [(3, 22, 6), (4, 23, 6), (5, 24, 6)] #diagonal absteigender Check
+    for start, end, step in ranges: 
+        for x in range(start, end, step):
+            if werte[x] != 0:
+                if werte[x] == werte[x+ 5] == werte[x + 10] == werte[x + 15]:
+                    win = True
+    if win == True: 
+        for i in range(10): 
+            print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+            delay(500)
+        delay(99999999999)
 
 
 # Programm ausführen
@@ -202,9 +205,6 @@ def check_winner(ak_spieler_num):
 spielfeld(holesize)
 delay(1000)
 abwechseln(1)
-
-
-
 
 
 
