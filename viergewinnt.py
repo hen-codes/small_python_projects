@@ -23,7 +23,7 @@ spalte5 = [0, 0, 0, 0, 0, 0]
 spalte6 = [0, 0, 0, 0, 0, 0]
 spalte7 = [0, 0, 0, 0, 0, 0]
 
-#spalten = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...,42]
+werte = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 def werte_anzeigen():
     print(".................)")
@@ -34,6 +34,7 @@ def werte_anzeigen():
     print(spalte5)
     print(spalte6)
     print(spalte7)
+    print(werte)
 
 def spielfeld(holesize):
     setPos(xstandard, 3.5*holesize)
@@ -83,6 +84,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte1[i] == 0:
                     spalte1[i] = ak_spieler_num + 1
+                    werte[i] = ak_spieler_num +1
                     ersetzt = True
                     wherey = i-1
     elif spalte == 2:
@@ -90,6 +92,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte2[i] == 0:
                     spalte2[i] = ak_spieler_num + 1
+                    werte[i + 6] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
     elif spalte == 3:
@@ -97,6 +100,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte3[i] == 0:
                     spalte3[i] = ak_spieler_num + 1
+                    werte[i + 12] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
     elif spalte == 4:
@@ -104,6 +108,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte4[i] == 0:
                     spalte4[i] = ak_spieler_num + 1
+                    werte[i +18] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
     elif spalte == 5:
@@ -111,6 +116,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte5[i] == 0:
                     spalte5[i] = ak_spieler_num + 1
+                    werte[i + 24] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
     elif spalte == 6:
@@ -118,6 +124,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte6[i] == 0:
                     spalte6[i] = ak_spieler_num + 1
+                    werte[i + 30] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
 
@@ -126,6 +133,7 @@ def zuweisen(spalte, ak_spieler_num):
             if ersetzt == False:
                 if spalte7[i] == 0:
                     spalte7[i] = ak_spieler_num + 1
+                    werte[i + 36] = ak_spieler_num + 1
                     ersetzt = True
                     wherey = i-1
     if ersetzt == False:
@@ -151,14 +159,41 @@ def berechne_position(wherex, wherey, ak_spieler_num):
     dot(holesize)
     penUp()
     delay(1000) 
-    werte_anzeigen()
+    # werte_anzeigen()
+    check_winner(ak_spieler_num)
     abwechseln(ak_spieler_num)
 
 # auf Sieg prüfen
 
-def check_winner: 
-     if spalte6[i] == spalte6[i+1] == spalte6[i+2] == spalte6[i+3]:
-                        print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+def check_winner(ak_spieler_num): 
+    for x in range(0, 24):
+        if werte[x] != 0:
+            if werte[x] == werte[x + 6] == werte[x + 12] == werte[x + 18]:
+                for i in range(10): 
+                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+                    delay(10)
+                delay(99999999999)
+    for x in range(0, 36, 6) and (1, 37, 6) and (2, 38, 6):
+        if werte[x] != 0:
+             if werte[x] == werte[x+ 1] == werte[x + 2] == werte[x + 3]:
+                for i in range(10): 
+                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+                    delay(10)
+                delay(99999999999)
+    for x in range(0, 18, 6) and (1, 19, 6) and (2, 20, 6):
+        if werte[x] != 0:
+             if werte[x] == werte[x+ 7] == werte[x + 14] == werte[x + 21]:
+                for i in range(10): 
+                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+                    delay(10)
+                delay(99999999999)
+    for x in range(3, 21, 6) and (4, 22, 6) and (5, 23, 6):
+        if werte[x] != 0:
+             if werte[x] == werte[x+ 5] == werte[x + 10] == werte[x + 15]:
+                for i in range(10): 
+                    print("Spieler", ak_spieler_num + 1, "hat gewonnen!")
+                    delay(10)
+                delay(99999999999)
     
 
 
@@ -167,6 +202,9 @@ def check_winner:
 spielfeld(holesize)
 delay(1000)
 abwechseln(1)
+
+
+
 
 
 
